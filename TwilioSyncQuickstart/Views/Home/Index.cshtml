@@ -1,0 +1,19 @@
+﻿<header>
+    <a href="https://www.twilio.com/docs/api/sync/quickstart-js"
+       target="_blank">
+        Read the getting started guide
+        <i class="fa fa-fw fa-external-link"></i>
+    </a>
+</header>
+
+<section>
+    <div id="message">
+        Welcome! Initializing Sync...
+    </div>
+    <input type="text" id="syncField" placeholder="Things you type in here will synchronise across browser tabs!" disabled />
+    <br />Open this page in a few tabs to test!
+</section>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/index.js")
+}
