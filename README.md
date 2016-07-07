@@ -1,14 +1,12 @@
 # Sync Quickstart for C# (ASP.NET MVC)
 
-# Sync Quickstart for Node.js
-
 This application should give you a ready-made starting point for writing your
 own real-time apps with Sync. Before we begin, we need to collect
 all the config values we need to run the application:
 
 | Config Values  | Description |
 | :-------------  |:------------- |
-Service Instance SID | A [service](/docs/api/sync/rest/services) instance where all the data for our application is stored and scoped. Generate one using the command below.
+Service Instance SID | A [service](https://www.twilio.com/docs/api/sync/rest/services) instance where all the data for our application is stored and scoped. Generate one using the command below.
 Account SID | Your primary Twilio account identifier - find this [in the console here](https://www.twilio.com/console).
 API Key | Used to authenticate - [generate one here in the console](https://www.twilio.com/console/dev-tools/api-keys).
 API Secret | Used to authenticate - [just like the above, you can use the console to generate one here](https://www.twilio.com/console/dev-tools/api-keys).
