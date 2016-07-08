@@ -25,7 +25,7 @@ namespace TwilioSyncQuickstart.Controllers
                 Identity = identity
             };
 
-            // Create an IP messaging grant for this token
+            // Create a Sync grant for this token
             var grant = new SyncGrant
             {
                 EndpointId = $"TwilioSyncQuickstart:{identity}:{device}",
