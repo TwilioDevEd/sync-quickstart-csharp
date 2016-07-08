@@ -45,13 +45,19 @@ button:hover {
   padding:6px;
 }
 
-#syncField {
-  padding:6px;
-  border-style:solid;
-  border-style:solid;
-  border-width:1px;
-  border-color:#e2e2e2;
-  width:50%;
-  margin:12px;
-  font-size:1.4em;
+#board {
+  width: 33%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#board .board-row {
+  width: 100%;
+  padding-bottom: 3px;
+}
+
+#board .board-row button {
+  width: 30%;
+  height: 100px;
+  font-size: 50px;
 }

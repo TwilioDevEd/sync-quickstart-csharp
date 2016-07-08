@@ -56,10 +56,10 @@ Visual Studio.  Edit `Web.config` with the four values we obtained above:
 ```
 
 You should now be ready to rock! Hit `F5` or the Play button, and you should 
-land on the home page of our basic Sync application. Open it up in a few browser
+land on the home page of our Tic-Tac-Twilio app. Open it up in a few browser
 tabs and play with the app!
 
-![screenshot of chat app](https://s3.amazonaws.com/howtodocs/quickstart/ipm-browser-quickstart.png)
+![screenshot of tic-tac-twilio](tic-tac-twilio.png)
 
 ## License
 
