@@ -37,36 +37,30 @@
       //Lets store it in our global variable
       syncDoc = doc;
 
-      //Initialize game board UI to current state
-      writeGameBoard(syncDoc.get());
+      //Initialize game board UI to current state (if it exists)
+      var data = syncDoc.get();
+      if (data.board) {
+        updateUserInterface(data);
+      }
 
       //Let's subscribe to changes on this document, so when something
       //changes on this document, we can trigger our UI to update
-      syncDoc.on("updated", writeGameBoard);
+      syncDoc.on("updated", updateUserInterface);
 
     });
 
   });
-
-  //Update the buttons on the board to match our document
-  function writeGameBoard(data) {
-    for (var row = 0; row < 3; row++) {
-      for (var col = 0; col < 3; col++) {
-        var selector = '[data-row="' + row + '"]' +
-          '[data-col="' + col + '"]';
-        var cellValue = data.board[row][col];
-        $(selector).html(cellValue === '' ? '&nbsp;' : cellValue);
-      }
-    }
-  }
 
   //Whenever a board button is clicked:
   $buttons.on("click", function (e) {
     //Toggle the value: X, O, or empty
     toggleCellValue($(e.target));
 
-    //Update the document and send to Sync
-    var data = readGameBoard();
+    //Update the document
+    var data = readGameBoardFromUserInterface();
+
+    //Send updated document to Sync
+    //This should trigger "updated" events on other clients
     syncDoc.set(data);
 
   });
@@ -85,7 +79,7 @@
   }
 
   //Read the state of the UI and create a new document
-  function readGameBoard() {
+  function readGameBoardFromUserInterface() {
     var board = [
       ['', '', ''],
       ['', '', ''],
@@ -101,6 +95,18 @@
     }
 
     return {board: board};
+  }
+
+  //Update the buttons on the board to match our document
+  function updateUserInterface(data) {
+    for (var row = 0; row < 3; row++) {
+      for (var col = 0; col < 3; col++) {
+        var selector = '[data-row="' + row + '"]' +
+          '[data-col="' + col + '"]';
+        var cellValue = data.board[row][col];
+        $(selector).html(cellValue === '' ? '&nbsp;' : cellValue);
+      }
+    }
   }
 
 });
