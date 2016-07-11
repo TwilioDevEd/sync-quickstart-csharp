@@ -1,4 +1,4 @@
-﻿$(function () {
+$(function () {
   //We'll use message to tell the user what's happening
   var $message = $('#message');
 
@@ -26,14 +26,14 @@
     syncClient = new Twilio.Sync.Client(accessManager);
 
     //Let's pop a message on the screen to show that Sync is ready
-    $message.html("Sync initialized!");
+    $message.html('Sync initialized!');
 
     //Now that Sync is active, lets enable our game board
-    $buttons.attr("disabled", false);
+    $buttons.attr('disabled', false);
 
     //This code will create and/or open a Sync document
     //Note the use of promises
-    syncClient.document("sync.game").then(function(doc) {
+    syncClient.document('sync.game').then(function(doc) {
       //Lets store it in our global variable
       syncDoc = doc;
 
@@ -45,14 +45,14 @@
 
       //Let's subscribe to changes on this document, so when something
       //changes on this document, we can trigger our UI to update
-      syncDoc.on("updated", updateUserInterface);
+      syncDoc.on('updated', updateUserInterface);
 
     });
 
   });
 
   //Whenever a board button is clicked:
-  $buttons.on("click", function (e) {
+  $buttons.on('click', function (e) {
     //Toggle the value: X, O, or empty
     toggleCellValue($(e.target));
 
