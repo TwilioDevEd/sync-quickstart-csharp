@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
 using System.Web.Mvc;
 using Faker;
-using Twilio.Auth;
+using Twilio.JWT;
 
 namespace TwilioSyncQuickstart.Controllers
 {
