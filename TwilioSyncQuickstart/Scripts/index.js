@@ -23,8 +23,7 @@ $(function () {
     device: getDeviceId()
   }, function (tokenResponse) {
     //Initialize the Sync client
-    accessManager = new Twilio.AccessManager(tokenResponse.token);
-    syncClient = new Twilio.Sync.Client(accessManager);
+    syncClient = new Twilio.Sync.Client(tokenResponse.token);
 
     //Let's pop a message on the screen to show that Sync is ready
     $message.html('Sync initialized!');
