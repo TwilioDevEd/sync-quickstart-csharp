@@ -1,7 +1,8 @@
 ﻿using System.Configuration;
 using System.Web.Mvc;
 using Faker;
-using Twilio.JWT;
+using Twilio.Jwt.AccessToken;
+using System.Collections.Generic;
 
 namespace TwilioSyncQuickstart.Controllers
 {
@@ -19,24 +20,23 @@ namespace TwilioSyncQuickstart.Controllers
             // Create a random identity for the client
             var identity = Internet.UserName();
 
-            // Create an Access Token generator
-            var token = new AccessToken(accountSid, apiKey, apiSecret)
+            // Create a Sync grant for this token
+            var grants = new HashSet<IGrant>
             {
-                Identity = identity
+                new SyncGrant
+                {
+                    EndpointId = $"TwilioSyncQuickstart:{identity}:{device}",
+                    ServiceSid = syncServiceSid
+                }
             };
 
-            // Create a Sync grant for this token
-            var grant = new SyncGrant
-            {
-                EndpointId = $"TwilioSyncQuickstart:{identity}:{device}",
-                ServiceSid = syncServiceSid
-            };
-            token.AddGrant(grant);
+            // Create an Access Token generator
+            var token = new Token(accountSid, apiKey, apiSecret, identity, grants: grants);
 
             return Json(new
             {
                 identity,
-                token = token.ToJWT()
+                token = token.ToJwt ()
             }, JsonRequestBehavior.AllowGet);
         }
     }
