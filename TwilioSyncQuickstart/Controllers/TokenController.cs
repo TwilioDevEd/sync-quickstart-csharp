@@ -9,7 +9,7 @@ namespace TwilioSyncQuickstart.Controllers
     public class TokenController : Controller
     {
         // GET: /token
-        public ActionResult Index(string device)
+        public ActionResult Index()
         {
             // Load Twilio configuration from Web.config
             var accountSid = ConfigurationManager.AppSettings["TwilioAccountSid"];
@@ -25,7 +25,6 @@ namespace TwilioSyncQuickstart.Controllers
             {
                 new SyncGrant
                 {
-                    EndpointId = $"TwilioSyncQuickstart:{identity}:{device}",
                     ServiceSid = syncServiceSid
                 }
             };
